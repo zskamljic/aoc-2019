@@ -17,7 +17,7 @@ public class Day01 {
     }
 
     private static void part02(List<String> lines) {
-        commonPart(lines, Day01::calculateTotaFuelForMass);
+        commonPart(lines, Day01::calculateTotalFuelForMass);
     }
 
     private static void commonPart(List<String> lines, IntUnaryOperator mapper) {
@@ -32,7 +32,7 @@ public class Day01 {
         return mass / 3 - 2;
     }
 
-    private static int calculateTotaFuelForMass(int mass) {
+    private static int calculateTotalFuelForMass(int mass) {
         var requiredFuel = 0;
 
         var addedFuel = calculateFuelForMass(mass);
