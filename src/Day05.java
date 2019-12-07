@@ -85,12 +85,12 @@ public class Day05 {
         }
 
         private int input(int currentIndex) {
-            numbers[numbers[currentIndex + 1]] = Integer.parseInt(scanner.next());
+            numbers[numbers[currentIndex + 1]] = acceptInt();
             return 2;
         }
 
         private int output(int modes, int currentIndex) {
-            System.out.println(getInput(modes, 0, currentIndex + 1));
+            produceInt(getInput(modes, 0, currentIndex + 1));
             return 2;
         }
 
@@ -148,6 +148,14 @@ public class Day05 {
         private int fail() {
             failed = true;
             return 0;
+        }
+
+        protected int acceptInt() {
+            return scanner.nextInt();
+        }
+
+        protected void produceInt(int value) {
+            System.out.println(value);
         }
     }
 }
