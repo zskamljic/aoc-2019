@@ -36,7 +36,7 @@ public class Day09 {
 
         private int relativeBase;
         private boolean failed;
-        private boolean halted;
+        protected boolean halted;
 
         IntcodeExecutor(long[] numbers) {
             this.numbers = new long[10000];
