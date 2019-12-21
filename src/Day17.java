@@ -4,6 +4,15 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class Day17 {
+    private static final char[] PATH_PROGRAM = """
+            A,A,B,C,B,C,B,C,B,A
+            L,10,L,8,R,8,L,8,R,6
+            R,6,R,8,R,8
+            R,6,R,6,L,8,L,10
+            n
+
+            """.toCharArray();
+
     public static void main(String[] args) throws IOException {
         var program = Stream.of(Files.readString(Paths.get("input17.txt")).trim()
                 .split(","))
@@ -15,7 +24,7 @@ public class Day17 {
     }
 
     private static void part01(long[] program) {
-        var executor = new IntcodeExecutor(program);
+        var executor = new IntcodeExecutor(program, PATH_PROGRAM);
         executor.execute();
 
         var output = executor.builder.toString();
@@ -26,7 +35,7 @@ public class Day17 {
     private static void part02(long[] program) {
         program[0] = 2; // Wake the robot;
 
-        var executor = new IntcodeExecutor(program);
+        var executor = new IntcodeExecutor(program, PATH_PROGRAM);
         executor.execute();
 
         var output = executor.builder.toString();
@@ -60,24 +69,18 @@ public class Day17 {
     }
 
     static class IntcodeExecutor extends Day09.IntcodeExecutor {
+        private final char[] asciiProgram;
         private StringBuilder builder = new StringBuilder();
-        private char[] pathProgram = """
-                A,A,B,C,B,C,B,C,B,A
-                L,10,L,8,R,8,L,8,R,6
-                R,6,R,8,R,8
-                R,6,R,6,L,8,L,10
-                n
-
-                """.toCharArray();
         private int index;
 
-        IntcodeExecutor(long[] numbers) {
+        IntcodeExecutor(long[] numbers, char[] asciiProgram) {
             super(numbers);
+            this.asciiProgram = asciiProgram;
         }
 
         @Override
         protected long acceptLong() {
-            return pathProgram[index++];
+            return asciiProgram[index++];
         }
 
         @Override
@@ -87,6 +90,12 @@ public class Day17 {
             } else {
                 System.out.println(value);
             }
+        }
+
+        public String getOutput() {
+            var result = builder.toString();
+            builder.setLength(0);
+            return result;
         }
     }
 }
