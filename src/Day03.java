@@ -53,38 +53,38 @@ public class Day03 {
         }
         return points;
     }
-}
 
-class Point {
-    int x;
-    int y;
-    int pathLength;
+    static class Point {
+        int x;
+        int y;
+        int pathLength;
 
-    public Point(int x, int y, int pathLength) {
-        this.x = x;
-        this.y = y;
-        this.pathLength = pathLength;
-    }
+        public Point(int x, int y, int pathLength) {
+            this.x = x;
+            this.y = y;
+            this.pathLength = pathLength;
+        }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Point)) return false;
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Point)) return false;
 
-        var other = (Point) obj;
-        return other.x == x && other.y == y;
-    }
+            var other = (Point) obj;
+            return other.x == x && other.y == y;
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
+        }
 
-    int getManhattanDistance() {
-        return Math.abs(x) + Math.abs(y);
-    }
+        int getManhattanDistance() {
+            return Math.abs(x) + Math.abs(y);
+        }
 
-    int getPathLength() {
-        return pathLength;
+        int getPathLength() {
+            return pathLength;
+        }
     }
 }
 
