@@ -1,0 +1,26 @@
+Items required: planetoid, sand, pointer, wreath
+
+Path:
+south
+west
+take wreath
+south
+south
+take pointer
+north
+north
+east
+north
+north
+north
+take sand
+south
+south
+west
+south
+take planetoid
+north
+west
+south
+west
+north
